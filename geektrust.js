@@ -69,6 +69,7 @@ function main(dataInput) {
             }
         }
     }
+    
 }
 const addBooking = (type, number, time) => {
     let timeSplit = time.split(":")
@@ -78,15 +79,23 @@ const addBooking = (type, number, time) => {
     }
     let vehicleInfo = trackInfo[type+'_REGULAR'];
     if(vehicleInfo.name === 'SUV_REGULAR' && vehicleInfo.COUNT==2){
+        let checkEndTime= vehicleList.find(item=>item.newEndTom==time);
+        if(!checkEndTime){
         vehicleInfo = {}
         vehicleInfo = trackInfo[type+'_VIP'];
+        }
         
     }
     if(vehicleInfo.name === 'SUV_VIP' && vehicleInfo.COUNT==1){
-        console.log('RACETRACK_FULL');
-        return;
+        let checkEndTime= vehicleList.find(item=>item.newEndTom==time);
+        if(!checkEndTime){
+            console.log('RACETRACK_FULL');
+            return;
+        }
     }
     if(vehicleInfo.name === 'CAR_REGULAR' && vehicleInfo.COUNT==3){
+        
+        
         vehicleInfo = {}
         vehicleInfo = trackInfo[type+'_VIP'];
         
@@ -154,6 +163,7 @@ const printInfo = () => {
         Total =Total + (vehicleListExtraTime[k].extraCost)
        
     }
+
     console.log(Total, ' ', vipTotal)
 }
 data = fs.readFileSync(process.argv[2]).toString();
