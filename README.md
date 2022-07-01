@@ -14,7 +14,3 @@ Internally both the scripts run the following commands
  * Once the `npm install` from the previous build process is complete, we will execute the program using the command
 
 `npm start --silent sample_input/input1.txt`
-
-We expect your program to take the location to the text file as parameter. Input needs to be read from a text file, and output should be printed to the console. The text file will contain only commands in the format prescribed by the respective problem.
-
-This main file, main.go should receive in the command line argument and parse the file passed in. Once the file is parsed and the application processes the commands, it should only print the output.
